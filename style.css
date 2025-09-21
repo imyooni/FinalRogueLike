@@ -14,11 +14,11 @@ body {
 #grid {
   display: grid;
   grid-template-columns: repeat(5, calc((100vw - 60px) / 5)); /* width per column */
-  grid-template-rows: repeat(3, 16vh);                         /* height per row */
+  grid-template-rows: repeat(3, 20vh);                         /* height per row */
   gap: 1vw;
 
   position: absolute;
-  top: 50%;               /* vertical center */
+  top: 40%;               /* vertical center */
   left: 50%;              /* horizontal center */
   transform: translate(-50%, -50%); /* shift half width/height */
 }
@@ -86,4 +86,5 @@ body {
 
 .bar-fill.hp { background: #d33; }
 .bar-fill.mp { background: #33d; }
+
 
