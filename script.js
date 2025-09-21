@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- grid setup ---
   grid.style.display = 'grid';
   grid.style.gridTemplateColumns = 'repeat(5, 120px)';
-  grid.style.gridTemplateRows = 'repeat(3, 50px)';
+  grid.style.gridTemplateRows = 'repeat(3, 30px)';
   grid.style.gap = '4px';
 
   for (let y = 0; y < 3; y++) {
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // style tile via JS
       tile.style.width = '120px';
-      tile.style.height = '50px';
+      tile.style.height = '30px';
       tile.style.border = '1px solid black';
       tile.style.background = 'rgba(134, 134, 134, 0.35)';
       tile.style.position = 'relative';
@@ -140,5 +140,6 @@ windowEls.forEach((win, i) => {
 
 
 });
+
 
 
