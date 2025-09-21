@@ -112,6 +112,7 @@ windowEls.forEach((win, i) => {
 
   // Header
   const header = document.createElement('div');
+  header.style.fontSize = '14px'
   header.textContent = `(Lv ${char.lv}) ${char.name}`;
   win.appendChild(header);
 
@@ -140,6 +141,7 @@ windowEls.forEach((win, i) => {
 
 
 });
+
 
 
 
