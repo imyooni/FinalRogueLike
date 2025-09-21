@@ -86,7 +86,6 @@ addSpriteToTile(monsterTile, './assets/slime_blue.png', 2, 0, -5, null);
 
 
 
-
 const characters = [
   { lv: 5, name: "Alice", hp: 80, maxHp: 100, mp: 30, maxMp: 50 },
   { lv: 3, name: "Bob", hp: 45, maxHp: 60, mp: 20, maxMp: 30 },
@@ -94,22 +93,27 @@ const characters = [
 ];
 
 const commandWindow = document.querySelector('.command-window');
+const windowEls = [
+  document.getElementById('char-window-1'),
+  document.getElementById('char-window-2'),
+  document.getElementById('char-window-3')
+];
 
-// Gap between windows
-const gap = 10;
+const gapVw = 2; // gap in vw between windows
 
-// Position each character window to the right of the command window
-characters.forEach((char, i) => {
-  const windowEl = document.getElementById(`char-window-${i+1}`);
-  const rect = commandWindow.getBoundingClientRect();
+// Get command window position dynamically
+const rect = commandWindow.getBoundingClientRect();
 
-  windowEl.style.left = rect.right + gap + i * (200 + gap) + 'px'; // 200 = window width
-  windowEl.style.bottom = window.innerHeight - rect.bottom + 'px';
+windowEls.forEach((win, i) => {
+  win.style.left = rect.right + gapVw + i * (win.offsetWidth + gapVw) + 'px';
+  win.style.bottom = window.innerHeight - rect.bottom + 'px';
 
-  // Add content
+  const char = characters[i];
+
+  // Header
   const header = document.createElement('div');
   header.textContent = `(Lv ${char.lv}) ${char.name}`;
-  windowEl.appendChild(header);
+  win.appendChild(header);
 
   // HP bar
   const hpContainer = document.createElement('div');
@@ -119,7 +123,7 @@ characters.forEach((char, i) => {
   hpFill.style.width = (char.hp / char.maxHp * 100) + '%';
   hpFill.textContent = `${char.hp} / ${char.maxHp}`;
   hpContainer.appendChild(hpFill);
-  windowEl.appendChild(hpContainer);
+  win.appendChild(hpContainer);
 
   // MP bar
   const mpContainer = document.createElement('div');
@@ -129,8 +133,9 @@ characters.forEach((char, i) => {
   mpFill.style.width = (char.mp / char.maxMp * 100) + '%';
   mpFill.textContent = `${char.mp} / ${char.maxMp}`;
   mpContainer.appendChild(mpFill);
-  windowEl.appendChild(mpContainer);
+  win.appendChild(mpContainer);
 });
+
 
 
 

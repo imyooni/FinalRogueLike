@@ -1,84 +1,79 @@
+/* Make everything relative to viewport */
 body {
   margin: 0;
   padding: 0;
-  background-image: url('./assets/background.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  font-family: monospace;
+  width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: url('./assets/background.png') center/cover no-repeat;
+  font-family: monospace;
+  overflow: hidden; /* prevent scrolling */
   position: relative;
 }
 
 /* Grid */
 #grid {
   display: grid;
-  grid-template-columns: repeat(5, 120px);
-  grid-template-rows: repeat(3, 60px);
-  gap: 2px;
+  grid-template-columns: repeat(5, calc((100vw - 60px) / 5)); /* width per column */
+  grid-template-rows: repeat(3, 20vh);                         /* height per row */
+  gap: 1vw;
+
+  position: absolute;
+  top: 50%;               /* vertical center */
+  left: 50%;              /* horizontal center */
+  transform: translate(-50%, -50%); /* shift half width/height */
 }
 
 .tile {
-  width: 120px;
-  height: 60px;
-  background: rgba(134, 134, 134, 0.39);
-  border: 1px solid #111;
-  box-sizing: border-box;
+  background: rgba(134, 134, 134, 0.35);
+  border: 1px solid black;
+  position: relative;
 }
-
 
 /* Command window */
 .command-window {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: #152226;
-  border: 1px solid black;
-  color: white;
-  border-radius: 10px;
-  padding: 10px 15px;
+  bottom: 2vh;
+  left: 2vw;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-size: 1rem;
+  gap: 10px;
+  background: #152226;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 1vh 1vw;
+  font-size: 2.5vw; /* responsive text */
 }
 
+/* Buttons */
 .command-window button {
+  padding: 0.5vh 1vw;
+  border-radius: 4px;
+  border: none;
   background: #333;
   color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
-.command-window button:hover {
-  background: #555;
-}
-
+/* Character windows */
 .character-window {
-  position: absolute; /* will be positioned via JS */
-  bottom: 20px;       /* aligns with command window */
-  width: 200px;
+  position: absolute;
+  bottom: 2vh;
+  width: 20vw; /* responsive width */
   background: rgba(21, 34, 38, 0.9);
   color: white;
   border: 1px solid black;
   border-radius: 8px;
-  padding: 10px;
-  font-family: monospace;
+  padding: 1vh 1vw;
+  font-size: 2vw;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 /* Bars */
 .bar-container {
   background: #333;
   border: 1px solid #111;
-  height: 12px;
+  height: 2vh;
   border-radius: 4px;
   position: relative;
 }
@@ -87,9 +82,9 @@ body {
   height: 100%;
   border-radius: 4px;
   text-align: right;
-  padding-right: 4px;
-  font-size: 10px;
-  line-height: 12px;
+  padding-right: 0.5vw;
+  font-size: 1.5vw;
+  line-height: 2vh;
   color: white;
 }
 
