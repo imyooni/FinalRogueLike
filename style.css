@@ -14,7 +14,7 @@ body {
 #grid {
   display: grid;
   grid-template-columns: repeat(5, calc((100vw - 60px) / 5)); /* width per column */
-  grid-template-rows: repeat(3, 20vh);                         /* height per row */
+  grid-template-rows: repeat(3, 16vh);                         /* height per row */
   gap: 1vw;
 
   position: absolute;
@@ -86,3 +86,4 @@ body {
 
 .bar-fill.hp { background: #d33; }
 .bar-fill.mp { background: #33d; }
+
