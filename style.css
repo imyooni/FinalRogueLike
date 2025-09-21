@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('./assets/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: monospace;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Grid */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(5, 120px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 2px;
+}
+
+.tile {
+  width: 120px;
+  height: 60px;
+  background: rgba(134, 134, 134, 0.39);
+  border: 1px solid #111;
+  box-sizing: border-box;
+}
+
+
+/* Command window */
+.command-window {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #152226;
+  border: 1px solid black;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.command-window button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.command-window button:hover {
+  background: #555;
+}
+
+.character-window {
+  position: absolute; /* will be positioned via JS */
+  bottom: 20px;       /* aligns with command window */
+  width: 200px;
+  background: rgba(21, 34, 38, 0.9);
+  color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Bars */
+.bar-container {
+  background: #333;
+  border: 1px solid #111;
+  height: 12px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  text-align: right;
+  padding-right: 4px;
+  font-size: 10px;
+  line-height: 12px;
+  color: white;
+}
+
+.bar-fill.hp { background: #d33; }
+.bar-fill.mp { background: #33d; }
