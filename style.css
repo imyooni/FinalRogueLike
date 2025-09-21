@@ -23,25 +23,20 @@ body {
   transform: translate(-50%, -50%); /* shift half width/height */
 }
 
-.tile {
-  background: rgba(134, 134, 134, 0.35);
-  border: 1px solid black;
-  position: relative;
-}
-
-/* Command window */
+/* Command window fixed at bottom left */
 .command-window {
-  position: absolute;
+  position: fixed; /* stays at bottom of visible area */
   bottom: 2vh;
   left: 2vw;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1vh;
   background: #152226;
   border: 1px solid black;
   border-radius: 8px;
   padding: 1vh 1vw;
-  font-size: 2.5vw; /* responsive text */
+  font-size: 2.5vw;
+  z-index: 10; /* above grid */
 }
 
 /* Buttons */
@@ -53,11 +48,11 @@ body {
   color: white;
 }
 
-/* Character windows */
+/* Character windows fixed at bottom, right of command window */
 .character-window {
-  position: absolute;
+  position: fixed; /* stays at bottom of visible area */
   bottom: 2vh;
-  width: 20vw; /* responsive width */
+  width: 20vw;
   background: rgba(21, 34, 38, 0.9);
   color: white;
   border: 1px solid black;
@@ -66,7 +61,8 @@ body {
   font-size: 2vw;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1vh;
+  z-index: 10; /* above grid */
 }
 
 /* Bars */
