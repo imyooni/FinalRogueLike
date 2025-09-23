@@ -10,6 +10,25 @@ body {
   position: relative;
 }
 
+.scene {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.scene.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+
 /* Grid */
 #grid {
   display: grid;
@@ -25,9 +44,9 @@ body {
 
 /* Command window fixed at bottom left */
 .command-window {
-  position: fixed; /* stays at bottom of visible area */
+  position: fixed;
   bottom: 2vh;
-  left: 2vw;
+  left: 2vw;                   /* final position */
   display: flex;
   flex-direction: column;
   gap: 1vh;
@@ -36,8 +55,16 @@ body {
   border-radius: 8px;
   padding: 1vh 1vw;
   font-size: 2.5vw;
-  z-index: 10; /* above grid */
+  z-index: 10;
+
+  transform: translateX(-150%); /* start offscreen to the left */
+  transition: transform 0.5s ease-out; /* smooth slide-in */
 }
+
+.command-window.active {
+  transform: translateX(0); /* move to original position */
+}
+
 
 /* Buttons */
 .command-window button {
@@ -50,10 +77,11 @@ body {
 
 /* Character windows fixed at bottom, right of command window */
 .character-window {
-  position: fixed; /* stays at bottom of visible area */
-  bottom: 2vh;
+  position: fixed;
+  bottom: -200px; /* start offscreen below the viewport */
+  left: 2vw;      /* horizontal position stays fixed */
   width: 20vw;
-  background: rgba(21, 34, 38, 0.9);
+  background: #152226;
   color: white;
   border: 1px solid black;
   border-radius: 8px;
@@ -62,29 +90,61 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1vh;
-  z-index: 10; /* above grid */
+  z-index: 10;
+  transition: bottom 0.5s ease-out; /* smooth vertical slide */
 }
 
-/* Bars */
+
+/* --- Bars --- */
 .bar-container {
   background: #333;
   border: 1px solid #111;
   height: 2vh;
   border-radius: 4px;
   position: relative;
+  margin-bottom: 0.5vh;
+}
+
+/* Special thin style for EXP bar */
+.bar-container.exp-container {
+  height: 0.8vh; /* Much thinner than other bars */
+  margin-bottom: 0.3vh;
 }
 
 .bar-fill {
   height: 100%;
   border-radius: 4px;
-  text-align: right;
-  padding-right: 0.5vw;
   font-size: 1.5vw;
-  line-height: 2vh;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 0.3s ease;
+}
+
+.bar-text {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  color: white;
+  font-size: 1.25vw;
+  text-shadow:
+      1px 1px 0px black,
+      -1px -1px 0px black,
+      1px -1px 0px black,
+      -1px 1px 0px black;
 }
 
 .bar-fill.hp { background: #d33; }
 .bar-fill.mp { background: #33d; }
-
-
+.bar-fill.exp { 
+  background: #ddc433; 
+  min-height: 100%;
+}

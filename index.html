@@ -3,12 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Grid Test</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title.css">
+  <link rel="stylesheet" href="characterSelection.css">
 </head>
 <body>
+
+
+<!-- Title Scene -->
+<div id="scene-title" class="scene active">
+  <h1>My Game</h1>
+  <button id="start-btn">Start Game</button>
+</div>
+
+
+<!-- Battle Scene -->
+<div id="scene-battle" class="scene">
+  
+
   <div id="grid"></div>
 
+  <div id="card-container"></div>
 
   <div class="command-window">
     <button>Attack</button>
@@ -17,13 +34,15 @@
     <button>Items</button>
   </div>
 
+  <div id="char-window-1" class="character-window"></div>
+  <div id="char-window-2" class="character-window"></div>
+  <div id="char-window-3" class="character-window"></div>
+</div>
+  
+ 
 
-<div id="char-window-1" class="character-window"></div>
-<div id="char-window-2" class="character-window"></div>
-<div id="char-window-3" class="character-window"></div>
 
 
-
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
